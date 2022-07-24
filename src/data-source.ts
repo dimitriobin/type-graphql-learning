@@ -5,7 +5,7 @@ const myDataSource = new DataSource({
     host: "localhost",
     port: 3306,
     username: "root",
-    password: "root",
+    password: "",
     database: "demo_typegraphql",
     entities: ["src/entity/*.*"],
     logging: true,
