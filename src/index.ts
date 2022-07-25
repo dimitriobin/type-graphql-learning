@@ -9,6 +9,7 @@ import connectRedis from "connect-redis";
 import cors from "cors";
 import { redis } from "./redis";
 import { LoginResolver } from "./modules/user/Login";
+import { MeResolver } from "./modules/user/Me";
 
 const main = async () => {
     // Initialize the Data Source object from TypeORM with the config of the DB
@@ -22,7 +23,10 @@ const main = async () => {
     // Build the GraphQL Schema (Type GraphQL)
     const schema = await buildSchema({
         // Register Resolvers
-        resolvers: [RegisterResolver, LoginResolver],
+        resolvers: [MeResolver, RegisterResolver, LoginResolver],
+        authChecker: ({ context: { req } }) => {
+            return !!req.session.userId;
+        },
     });
 
     // Instantiate Apollo Server with the builded Schema (Apollo Server Express)
