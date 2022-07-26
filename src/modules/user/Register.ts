@@ -2,7 +2,11 @@ import { Arg, Mutation, Query, Resolver, UseMiddleware } from "type-graphql";
 import bcrypt from "bcryptjs";
 import { User } from "../../entity/user.entity";
 import { RegisterInput } from "./register/RegisterInput";
+<<<<<<< HEAD
 import { isAuth } from "../middleware/isAuth";
+=======
+import { isAuth } from "./middleware/isAuth";
+>>>>>>> 55ae9457d723f5476c149131c54e42392c219d1c
 
 @Resolver()
 export class RegisterResolver {
